@@ -32,7 +32,8 @@ module.exports = function handler(req, res) {
     return unauthorized(res);
   }
 
-  const route = req.url.split("?")[0].replace(/\/+$/, "") || "/";
+  const rawRoute = req.url.split("?")[0].replace(/\/+$/, "") || "/";
+  const route = pages[rawRoute] ? rawRoute : "/";
   const html = pages[route];
 
   if (!html) {
