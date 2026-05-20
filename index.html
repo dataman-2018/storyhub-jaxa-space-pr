@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>宇宙戦略広報 — StoryHub × サニーサイドアップ × note</title>
+<meta name="description" content="宇宙事業者の情報発信を革新する、1 Source Multi-Content戦略広報ソリューション">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;
+  --card:#fff;
+  --ink:#1a1a18;
+  --muted:#5f5e5a;
+  --line:#e0ddd5;
+  --cosmic:#3b5bdb;
+  --cosmic-deep:#1e3a8a;
+  --cosmic-soft:#eef2ff;
+  --indigo:#0f172a;
+  --violet:#7c6bf6;
+  --violet-deep:#534ab7;
+  --violet-soft:#eeedfe;
+  --blue:#5b9bd5;
+  --blue-deep:#185fa5;
+  --blue-soft:#e6f1fb;
+  --green:#6bc4a0;
+  --green-deep:#0f6e56;
+  --green-soft:#e1f5ee;
+  --amber:#e2a336;
+  --amber-deep:#854f0b;
+  --amber-soft:#faeeda;
+  --red:#e05a5a;
+  --red-soft:#fce8e8;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+.page{max-width:720px;margin:0 auto;padding:2.5rem 1.5rem;display:flex;flex-direction:column;gap:2.5rem}
+
+.hero{background:var(--indigo);margin:-2.5rem -1.5rem 0;padding:6rem 2.5rem 4rem;text-align:center;position:relative;overflow:hidden;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(59,91,219,.18),transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(124,107,246,.12),transparent 50%),radial-gradient(ellipse at 50% 0%,rgba(59,91,219,.06),transparent 40%);pointer-events:none}
+.hero-stars{position:absolute;inset:0;overflow:hidden}
+.hero-stars::before{content:"";position:absolute;width:2px;height:2px;top:12%;left:65%;border-radius:50%;background:rgba(255,255,255,.35);box-shadow:80px 30px 0 0 rgba(255,255,255,.15),200px 60px 0 0 rgba(255,255,255,.2),40px 100px 0 0 rgba(255,255,255,.25),280px 15px 0 0 rgba(255,255,255,.1),160px 130px 0 0 rgba(255,255,255,.18),-60px 80px 0 0 rgba(255,255,255,.22),-180px 30px 0 0 rgba(255,255,255,.12),-120px 120px 0 0 rgba(255,255,255,.15),320px 90px 0 0 rgba(255,255,255,.1),-250px 60px 0 0 rgba(255,255,255,.18),100px 180px 0 0 rgba(255,255,255,.08),-300px 100px 0 0 rgba(255,255,255,.12)}
+.hero *{position:relative}
+.hero-eyebrow{font-size:11px;font-weight:500;color:rgba(247,248,250,.35);letter-spacing:.14em;margin-bottom:1.5rem}
+.hero-title{font-size:clamp(28px,5vw,40px);font-weight:500;color:#fff;line-height:1.45;margin-bottom:1.25rem}
+.hero-title em{font-style:normal;color:var(--cosmic)}
+.hero-sub{font-size:14px;color:rgba(247,248,250,.5);line-height:1.8;max-width:520px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:6px 14px;border:1px solid rgba(59,91,219,.3);border-radius:20px;font-size:11px;color:rgba(247,248,250,.55);letter-spacing:.04em}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cosmic)}
+.hero-meta{position:absolute;top:24px;right:32px;font-size:11px;color:rgba(247,248,250,.2);text-align:right;letter-spacing:.04em}
+
+.sec-label{font-size:11px;font-weight:500;color:#888780;letter-spacing:.1em;margin-bottom:.5rem}
+.sec-heading{font-size:20px;font-weight:500;color:var(--ink);margin-bottom:.75rem;line-height:1.4}
+.sec-body{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:1.25rem}
+.divider{height:0.5px;background:var(--line)}
+
+/* Problems */
+.problem-list{display:flex;flex-direction:column;gap:10px}
+.problem-item{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:0.5px solid var(--line);border-radius:12px;padding:1rem 1.25rem}
+.problem-icon{width:32px;height:32px;border-radius:8px;background:var(--red-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:var(--red)}
+.problem-text{font-size:13px;color:var(--ink);line-height:1.7}
+.problem-text strong{font-weight:600}
+.insight-box{border:1.5px solid var(--cosmic);border-radius:12px;padding:1.25rem 1.5rem;background:var(--card);text-align:center;margin-top:1rem}
+.insight-text{font-size:15px;font-weight:500;color:var(--ink);line-height:1.6}
+
+/* Hub visual — adapted from persol-career */
+.hub-visual{position:relative;background:var(--card);border:1.5px solid var(--cosmic);border-radius:16px;padding:2.5rem 1.5rem;margin-top:1rem;overflow:hidden}
+.hub-lines{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hub-center{position:relative;z-index:2;width:160px;height:160px;margin:0 auto;border-radius:50%;background:linear-gradient(135deg,var(--cosmic-deep),var(--cosmic));display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(30,58,138,.25)}
+.hub-center-icon{font-size:28px;margin-bottom:4px}
+.hub-center-title{font-size:14px;font-weight:600;color:#fff;line-height:1.3;text-align:center}
+.hub-center-sub{font-size:10px;color:rgba(255,255,255,.6);margin-top:2px;text-align:center}
+.hub-ring{position:relative;z-index:1;margin-top:-80px;padding-top:100px}
+.hub-spokes{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:600px;margin:0 auto}
+.hub-spoke{display:flex;align-items:center;gap:8px;background:var(--card);border:0.5px solid var(--line);border-radius:40px;padding:8px 16px 8px 10px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:transform .2s,box-shadow .2s}
+.hub-spoke:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.hub-spoke-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.hub-spoke-text{font-size:12px;font-weight:500;color:var(--ink);line-height:1.3}
+.hub-spoke-text span{display:block;font-size:10px;font-weight:400;color:var(--muted)}
+.hub-legend{display:flex;justify-content:center;gap:16px;margin-top:1rem}
+.hub-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.hub-legend-dot{width:8px;height:8px;border-radius:50%}
+.hub-result{text-align:center;margin-top:1.25rem;padding-top:1rem;border-top:0.5px solid var(--line)}
+.hub-result-num{font-size:36px;font-weight:600;color:var(--cosmic-deep);letter-spacing:-.02em}
+.hub-result-label{font-size:12px;color:var(--muted);margin-top:2px}
+.why-box{background:var(--cosmic-soft);border-radius:12px;padding:1.25rem 1.5rem;margin-top:1.25rem}
+.why-title{font-size:13px;font-weight:600;color:var(--cosmic-deep);margin-bottom:.5rem}
+.why-text{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* Alliance cards */
+.alliance-cards{display:flex;flex-direction:column;gap:12px;margin-top:1rem}
+.a-card{background:var(--card);border:0.5px solid var(--line);border-radius:14px;padding:1.25rem 1.5rem}
+.a-card-header{display:flex;align-items:center;gap:10px;margin-bottom:.75rem}
+.a-card-badge{font-size:10px;font-weight:600;color:#fff;border-radius:5px;padding:2px 10px;white-space:nowrap}
+.a-card-badge.strategy{background:var(--violet-deep)}
+.a-card-badge.production{background:var(--cosmic-deep)}
+.a-card-badge.distribution{background:var(--green-deep)}
+.a-card-name{font-size:16px;font-weight:500;color:var(--ink)}
+.a-card-body{font-size:13px;color:var(--muted);line-height:1.8}
+.a-card-body strong{color:var(--ink);font-weight:600}
+.a-card-strengths{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.a-card-tag{font-size:10px;font-weight:500;border-radius:4px;padding:3px 8px}
+
+/* Flow bar */
+.flow-bar{background:var(--indigo);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:center;gap:0;margin-top:1rem;flex-wrap:wrap}
+.flow-step{text-align:center;flex:1;min-width:100px}
+.flow-step-label{font-size:10px;color:rgba(247,248,250,.35);letter-spacing:.06em;margin-bottom:4px}
+.flow-step-name{font-size:13px;font-weight:500;color:#fff}
+.flow-step-sub{font-size:10px;color:rgba(247,248,250,.4);margin-top:2px}
+.flow-arrow{color:rgba(247,248,250,.2);font-size:16px;padding:0 8px}
+
+/* AIO */
+.aio-highlight{background:var(--cosmic-soft);border:1.5px solid var(--cosmic);border-radius:12px;padding:1.25rem 1.5rem;text-align:center;margin-top:1rem}
+.aio-num{font-size:40px;font-weight:600;color:var(--cosmic-deep);line-height:1}
+.aio-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-top:6px}
+.aio-cards{display:flex;flex-direction:column;gap:10px;margin-top:1rem}
+.aio-card{background:var(--card);border:0.5px solid var(--line);border-radius:12px;padding:1rem 1.25rem}
+.aio-card h4{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.aio-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* Trust */
+.trust-section{background:var(--indigo);border-radius:16px;padding:2rem 2rem;color:#fff;position:relative;overflow:hidden}
+.trust-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(59,91,219,.08),transparent 70%);pointer-events:none}
+.trust-section *{position:relative}
+.trust-label{font-size:11px;font-weight:500;color:rgba(247,248,250,.35);letter-spacing:.1em;margin-bottom:.5rem}
+.trust-heading{font-size:20px;font-weight:500;color:#fff;margin-bottom:.75rem}
+.trust-body{font-size:13px;color:rgba(247,248,250,.5);line-height:1.8;margin-bottom:1.25rem}
+.trust-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem}
+.ts-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 12px;text-align:center}
+.ts-num{font-size:26px;font-weight:600;color:var(--cosmic);line-height:1}
+.ts-label{font-size:10px;color:rgba(247,248,250,.4);margin-top:4px;line-height:1.4}
+.trust-media-title{font-size:10px;letter-spacing:.1em;color:rgba(247,248,250,.25);margin-bottom:10px;text-align:center}
+.media-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:1.25rem}
+.media-logo{padding:6px 12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;font-size:11px;color:rgba(247,248,250,.5);white-space:nowrap}
+.trust-cases{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 16px}
+.tc-tag{font-size:10px;font-weight:500;color:var(--cosmic);letter-spacing:.06em;margin-bottom:4px}
+.tc-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:4px;line-height:1.4}
+.tc-body{font-size:11px;color:rgba(247,248,250,.4);line-height:1.6}
+.trust-investors{margin-top:12px;padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px}
+.trust-investors-label{font-size:10px;color:rgba(247,248,250,.3);letter-spacing:.06em;margin-bottom:4px}
+.trust-investors-text{font-size:12px;color:rgba(247,248,250,.6)}
+
+/* Quality */
+.quality-cards{display:flex;flex-direction:column;gap:10px;margin-top:1rem}
+.q-card{background:var(--card);border:0.5px solid var(--line);border-left:3px solid var(--cosmic);border-radius:0 12px 12px 0;padding:1rem 1.25rem}
+.q-card h4{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.q-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* Content plan */
+.plan-cards{display:flex;flex-direction:column;gap:10px;margin-top:1rem}
+.plan-card{background:var(--card);border:0.5px solid var(--line);border-radius:14px;padding:1.25rem 1.5rem}
+.plan-header{display:flex;align-items:center;gap:10px;margin-bottom:.5rem}
+.plan-badge{font-size:10px;font-weight:600;color:#fff;border-radius:5px;padding:2px 10px;white-space:nowrap}
+.plan-title{font-size:15px;font-weight:500;color:var(--ink)}
+.plan-body{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:8px}
+.plan-outputs{display:flex;flex-wrap:wrap;gap:6px}
+.plan-output{font-size:10px;font-weight:500;background:var(--cosmic-soft);color:var(--cosmic-deep);border-radius:4px;padding:3px 8px}
+
+/* Roadmap */
+.phase-cards{display:flex;flex-direction:column;gap:12px;margin-top:1rem}
+.phase-card{background:var(--card);border:0.5px solid var(--line);border-radius:14px;padding:1.25rem 1.5rem}
+.phase-header{display:flex;align-items:center;gap:10px;margin-bottom:.75rem}
+.phase-badge{font-size:11px;font-weight:600;color:#fff;border-radius:6px;padding:3px 10px}
+.phase-title{font-size:15px;font-weight:500;color:var(--ink)}
+.phase-body{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* CTA */
+.cta{background:var(--indigo);border-radius:16px;padding:2.5rem;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(59,91,219,.12),transparent 60%);pointer-events:none}
+.cta *{position:relative}
+.cta-text{font-size:18px;font-weight:500;color:#fff;line-height:1.6;margin-bottom:1.25rem}
+.cta-text em{font-style:normal;color:var(--cosmic)}
+.cta-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cta-step{padding:14px 16px;border:1px solid rgba(255,255,255,.1);border-radius:10px;text-align:center}
+.cta-step-num{font-size:10px;color:rgba(247,248,250,.35);letter-spacing:.06em;margin-bottom:4px}
+.cta-step-name{font-size:13px;font-weight:500;color:#fff;line-height:1.4}
+
+.footer{text-align:center;font-size:11px;color:#b4b2a9;padding:1rem 0}
+
+/* PDF button */
+.pdf-btn{position:fixed;bottom:24px;right:24px;z-index:100;background:var(--cosmic-deep);color:#fff;border:none;border-radius:10px;padding:12px 20px;font-size:13px;font-weight:500;cursor:pointer;box-shadow:0 4px 16px rgba(30,58,138,.3);display:flex;align-items:center;gap:8px;transition:transform .15s,box-shadow .15s;font-family:inherit}
+.pdf-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(30,58,138,.4)}
+.pdf-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Print / PDF styles */
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+  body{background:#fff!important}
+  .page{max-width:100%;padding:0;gap:1.5rem}
+  .hero{margin:0!important;min-height:auto!important;padding:3rem 2rem 2.5rem!important;break-after:page}
+  .pdf-btn{display:none!important}
+  .hub-visual{break-inside:avoid}
+  .trust-section{break-inside:avoid}
+  .alliance-cards,.plan-cards,.quality-cards,.aio-cards{break-inside:avoid}
+  .a-card,.plan-card,.q-card,.aio-card,.tc-card,.problem-item{break-inside:avoid}
+  .divider{margin:.75rem 0}
+  .sec-label,.sec-heading,.sec-body{break-after:avoid}
+  .hub-spoke:hover{transform:none;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+}
+
+@media(max-width:720px){
+  .page{padding:1.25rem;gap:1.75rem}
+  .hero{padding:2.5rem 1.25rem}
+  .hero-title{font-size:22px}
+  .hub-center{width:130px;height:130px}
+  .hub-ring{margin-top:-65px;padding-top:80px}
+  .trust-stats{grid-template-columns:repeat(2,1fr)}
+  .trust-cases{grid-template-columns:1fr}
+  .cta-steps{grid-template-columns:1fr}
+  .flow-bar{flex-direction:column;gap:8px}
+  .flow-arrow{transform:rotate(90deg)}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-stars"></div>
+    <div class="hero-meta">Confidential<br>2026.05</div>
+    <div class="hero-eyebrow">Space Strategic Communications</div>
+    <div class="hero-title">AI時代の<em>Story OS</em>で、<br>宇宙の物語を</div>
+    <div class="hero-sub">宇宙戦略基金で加速する技術開発。その成果を社会に届けるには、技術と同じだけの「伝える力」が必要です。AI編集基盤とプロフェッショナルチームの三社連携で、宇宙事業者の情報発信を支援します。</div>
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      1 Source, Multi-Content Format
+    </div>
+  </div>
+
+  <!-- 01 Challenge -->
+  <div>
+    <div class="sec-label">01 課題認識</div>
+    <div class="sec-heading">宇宙産業の「伝える力」が足りていない</div>
+    <div class="sec-body">1兆円規模の技術開発投資が進む一方、情報発信は後回しに。技術の社会実装には認知と共感の形成が不可欠です。</div>
+    <div class="problem-list">
+      <div class="problem-item">
+        <div class="problem-icon">&times;</div>
+        <div class="problem-text"><strong>技術は一流、発信は後回し</strong><br>エンジニア中心の組織では広報の専任人材が不在。技術的成果が社会に届かないまま埋もれています。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">&times;</div>
+        <div class="problem-text"><strong>採用・資金調達に直結する認知不足</strong><br>宇宙産業の人材獲得競争は激化。事業のビジョンとストーリーを伝える手段が求められています。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">&times;</div>
+        <div class="problem-text"><strong>1回の発信で終わるコンテンツ</strong><br>プレスリリース1本、イベント登壇1回。貴重な情報資産が単発で消費され、長期的な認知形成に活かされていません。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">&times;</div>
+        <div class="problem-text"><strong>AI検索時代の「見つかる力」の不足</strong><br>ChatGPTやPerplexityが情報の入口になる時代。AIに正しく引用される情報基盤がなければ、存在しないのと同じです。</div>
+      </div>
+    </div>
+    <div class="insight-box">
+      <div class="insight-text">技術だけでは伝わらない。<br>「AIに正しく語られる」情報基盤がなければ、宇宙産業は社会の支持を得られない。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 02 Concept: Hub Visual -->
+  <div>
+    <div class="sec-label">02 コンセプト</div>
+    <div class="sec-heading">AI時代の「1つのソースから、あらゆるコンテンツを、あらゆるチャネルへ」</div>
+    <div class="sec-body">対談動画、イベント登壇、技術者インタビュー、プレスブリーフィング ── どんな1つの情報源からでも、AIが複数フォーマットのコンテンツに展開。リードタイムとコストを圧縮します。</div>
+
+    <div class="hub-visual">
+      <svg class="hub-lines" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="35%" r="50%">
+            <stop offset="0%" stop-color="var(--cosmic)" stop-opacity=".08"/>
+            <stop offset="100%" stop-color="var(--cosmic)" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="600" height="320" fill="url(#glow)"/>
+      </svg>
+
+      <div class="hub-center">
+        <div class="hub-center-icon">&#127759;</div>
+        <div class="hub-center-title">1 Source</div>
+        <div class="hub-center-sub">対談 / 登壇 / 取材 / etc.</div>
+      </div>
+
+      <div class="hub-ring">
+        <div class="hub-spokes">
+          <div class="hub-spoke">
+            <div class="hub-spoke-dot" style="background:var(--amber-soft);color:var(--amber-deep)">&#9997;</div>
+            <div class="hub-spoke-text">note記事<span>ストーリー型テキスト</span></div>
+          </div>
+          <div class="hub-spoke">
+            <div class="hub-spoke-dot" style="background:var(--amber-soft);color:var(--amber-deep)">&#128196;</div>
+            <div class="hub-spoke-text">オウンド記事<span>構造化テキスト / AIO最適化</span></div>
+          </div>
+          <div class="hub-spoke">
+            <div class="hub-spoke-dot" style="background:var(--blue-soft);color:var(--blue-deep)">&#128250;</div>
+            <div class="hub-spoke-text">YouTube / 動画<span>フル尺 + ショート</span></div>
+          </div>
+          <div class="hub-spoke">
+            <div class="hub-spoke-dot" style="background:var(--green-soft);color:var(--green-deep)">&#127911;</div>
+            <div class="hub-spoke-text">Podcast<span>音声コンテンツ</span></div>
+          </div>
+          <div class="hub-spoke">
+            <div class="hub-spoke-dot" style="background:var(--violet-soft);color:var(--violet-deep)">&#128172;</div>
+            <div class="hub-spoke-text">SNS投稿<span>X / LinkedIn / Instagram</span></div>
+          </div>
+          <div class="hub-spoke">
+            <div class="hub-spoke-dot" style="background:var(--violet-soft);color:var(--violet-deep)">&#128200;</div>
+            <div class="hub-spoke-text">IR要約<span>投資家向けファクトシート</span></div>
+          </div>
+          <div class="hub-spoke">
+            <div class="hub-spoke-dot" style="background:var(--green-soft);color:var(--green-deep)">&#128101;</div>
+            <div class="hub-spoke-text">採用広報<span>技術者ストーリー</span></div>
+          </div>
+          <div class="hub-spoke">
+            <div class="hub-spoke-dot" style="background:var(--blue-soft);color:var(--blue-deep)">&#128240;</div>
+            <div class="hub-spoke-text">プレスリリース<span>メディア配信用</span></div>
+          </div>
+        </div>
+
+        <div class="hub-legend">
+          <div class="hub-legend-item"><div class="hub-legend-dot" style="background:var(--amber)"></div>テキスト</div>
+          <div class="hub-legend-item"><div class="hub-legend-dot" style="background:var(--blue)"></div>動画 / 音声</div>
+          <div class="hub-legend-item"><div class="hub-legend-dot" style="background:var(--violet)"></div>SNS / IR</div>
+          <div class="hub-legend-item"><div class="hub-legend-dot" style="background:var(--green)"></div>採用 / 音声</div>
+        </div>
+
+        <div class="hub-result">
+          <div class="hub-result-num">8+<span style="font-size:18px;font-weight:400">フォーマット</span></div>
+          <div class="hub-result-label">1つのソースから展開可能なコンテンツ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-box">
+      <div class="why-title">なぜ今まで実現しなかったのか</div>
+      <div class="why-text">1つの素材からの多フォーマット展開は、従来は編集工数が膨大で現実的ではありませんでした。StoryHubのAI編集基盤は、文字起こし・構成・多フォーマット変換を一気通貫で処理し、プロ編集者が品質を仕上げます。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 03 Alliance -->
+  <div>
+    <div class="sec-label">03 座組</div>
+    <div class="sec-heading">三社連携で、戦略から流通まで一気通貫</div>
+    <div class="sec-body">PR戦略・コンテンツ制作・プラットフォーム流通の各領域で実績を持つ三社が連携し、宇宙事業者の広報を包括的に支援します。</div>
+
+    <div class="alliance-cards">
+      <div class="a-card">
+        <div class="a-card-header">
+          <div class="a-card-badge strategy">Strategy</div>
+          <div class="a-card-name">サニーサイドアップ</div>
+        </div>
+        <div class="a-card-body">
+          東証プライム上場のPRコミュニケーションファーム。<strong>スポーツ・エンタメ領域で培った「社会的ムーブメントの設計力」</strong>が強み。中田英寿氏のブランディングをはじめ、社会課題を「自分ごと化」させるストーリー設計に豊富な実績があります。宇宙産業においても、<strong>技術を社会的な関心事に変換するPR戦略の策定</strong>、メディアリレーション、イベントプロデュースを担当します。
+        </div>
+        <div class="a-card-strengths">
+          <span class="a-card-tag" style="background:var(--violet-soft);color:var(--violet-deep)">PR戦略策定</span>
+          <span class="a-card-tag" style="background:var(--violet-soft);color:var(--violet-deep)">メディアリレーション</span>
+          <span class="a-card-tag" style="background:var(--violet-soft);color:var(--violet-deep)">社会的ムーブメント設計</span>
+          <span class="a-card-tag" style="background:var(--violet-soft);color:var(--violet-deep)">イベントプロデュース</span>
+        </div>
+      </div>
+      <div class="a-card">
+        <div class="a-card-header">
+          <div class="a-card-badge production">Production</div>
+          <div class="a-card-name">StoryHub</div>
+        </div>
+        <div class="a-card-body">
+          AI編集基盤を150社以上のメディア企業に提供するコンテンツテクノロジー企業。<strong>「Human in the Loop」</strong>のコンセプトのもと、AIに熟達したプロフェッショナルエディトリアルファームと連携し、プロユースに耐えうる品質を実現。コンテンツの企画・制作・品質管理を担当します。
+        </div>
+        <div class="a-card-strengths">
+          <span class="a-card-tag" style="background:var(--cosmic-soft);color:var(--cosmic-deep)">AI編集基盤</span>
+          <span class="a-card-tag" style="background:var(--cosmic-soft);color:var(--cosmic-deep)">Human in the Loop</span>
+          <span class="a-card-tag" style="background:var(--cosmic-soft);color:var(--cosmic-deep)">特許取得済</span>
+          <span class="a-card-tag" style="background:var(--cosmic-soft);color:var(--cosmic-deep)">150社+導入</span>
+        </div>
+      </div>
+      <div class="a-card">
+        <div class="a-card-header">
+          <div class="a-card-badge distribution">Distribution</div>
+          <div class="a-card-name">note</div>
+        </div>
+        <div class="a-card-body">
+          月間数千万人が利用する日本有数のコンテンツプラットフォーム。<strong>記事の約40%が1年後も読まれ続ける</strong>長期資産性と、<strong>AI検索経由の流入が通常検索の約4倍</strong>というAIO適性の高さが特徴。コンテンツの流通・蓄積基盤を担当します。
+        </div>
+        <div class="a-card-strengths">
+          <span class="a-card-tag" style="background:var(--green-soft);color:var(--green-deep)">AIO流入4倍</span>
+          <span class="a-card-tag" style="background:var(--green-soft);color:var(--green-deep)">長期資産性</span>
+          <span class="a-card-tag" style="background:var(--green-soft);color:var(--green-deep)">月間数千万ユーザー</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-bar">
+      <div class="flow-step">
+        <div class="flow-step-label">SSU</div>
+        <div class="flow-step-name">戦略策定</div>
+        <div class="flow-step-sub">PR設計 / メディアプラン</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-label">StoryHub</div>
+        <div class="flow-step-name">企画・制作</div>
+        <div class="flow-step-sub">AI編集 / 品質管理</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-label">note</div>
+        <div class="flow-step-name">流通・AIO</div>
+        <div class="flow-step-sub">配信 / 長期蓄積</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 04 Content Plan -->
+  <div>
+    <div class="sec-label">04 コンテンツ企画案</div>
+    <div class="sec-heading">宇宙事業者のための6つのコンテンツ企画</div>
+    <div class="sec-body">各企画は「1 Source → Multi-Content」で展開可能。採用・IR・社会認知の複数目的に同時に効くコンテンツを設計します。</div>
+
+    <div class="plan-cards">
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-badge" style="background:var(--cosmic-deep)">企画 1</div>
+          <div class="plan-title">創業者対談シリーズ「宇宙をなぜ選んだか」</div>
+        </div>
+        <div class="plan-body">宇宙スタートアップの創業者が「なぜ宇宙に賭けたのか」を語る対談企画。技術ではなく「意志と決断」にフォーカスし、採用広報・投資家向けナラティブの両方に展開します。</div>
+        <div class="plan-outputs">
+          <span class="plan-output">note記事</span>
+          <span class="plan-output">YouTube対談動画</span>
+          <span class="plan-output">Podcast</span>
+          <span class="plan-output">SNSクリップ</span>
+          <span class="plan-output">採用広報用抜粋</span>
+        </div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-badge" style="background:var(--violet-deep)">企画 2</div>
+          <div class="plan-title">技術者インタビュー「宇宙を支える人」</div>
+        </div>
+        <div class="plan-body">ロケットエンジニア、衛星開発者、地上管制の専門家 ── 宇宙を支える技術者のリアルな仕事と想いを描くインタビュー。採用目的のコンテンツとしても機能します。</div>
+        <div class="plan-outputs">
+          <span class="plan-output">note記事</span>
+          <span class="plan-output">採用広報記事</span>
+          <span class="plan-output">SNS投稿</span>
+          <span class="plan-output">社内報向け編集版</span>
+        </div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-badge" style="background:var(--green-deep)">企画 3</div>
+          <div class="plan-title">イベントレポート「宇宙産業の最前線」</div>
+        </div>
+        <div class="plan-body">宇宙関連カンファレンスやJAXA主催イベントのセッションをAI編集基盤で記事化。SuShi Tech Tokyo 2026での実証済みワークフローをそのまま適用します。</div>
+        <div class="plan-outputs">
+          <span class="plan-output">note記事（複数セッション）</span>
+          <span class="plan-output">イベントダイジェスト動画</span>
+          <span class="plan-output">SNSハイライト</span>
+        </div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-badge" style="background:var(--amber-deep)">企画 4</div>
+          <div class="plan-title">「宇宙技術×社会課題」異業種対談</div>
+        </div>
+        <div class="plan-body">宇宙事業者と異業種（防災・農業・物流・ヘルスケア等）のリーダーが対談。宇宙技術の社会的価値を具体的に可視化し、「自分ごと化」を促進します。</div>
+        <div class="plan-outputs">
+          <span class="plan-output">note記事</span>
+          <span class="plan-output">YouTube対談動画</span>
+          <span class="plan-output">プレスリリース</span>
+          <span class="plan-output">IR向けファクトシート</span>
+        </div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-badge" style="background:var(--cosmic-deep)">企画 5</div>
+          <div class="plan-title">宇宙スタートアップ図鑑</div>
+        </div>
+        <div class="plan-body">宇宙戦略基金の採択企業を中心に、各社の技術・ビジョン・チームを定型フォーマットで紹介するシリーズ企画。業界全体の認知度向上と、投資家・求職者向けの情報基盤を構築します。</div>
+        <div class="plan-outputs">
+          <span class="plan-output">note記事（定型テンプレ）</span>
+          <span class="plan-output">SNSカード</span>
+          <span class="plan-output">まとめページ</span>
+        </div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-badge" style="background:var(--violet-deep)">企画 6</div>
+          <div class="plan-title">IRナラティブ支援</div>
+        </div>
+        <div class="plan-body">上場済み・上場準備中の宇宙事業者向けに、IR情報をストーリー形式でわかりやすく伝えるナラティブコンテンツを制作。note社やAXEL SPACE社での支援実績をベースにしたソリューションです。</div>
+        <div class="plan-outputs">
+          <span class="plan-output">IR note記事</span>
+          <span class="plan-output">投資家向け要約</span>
+          <span class="plan-output">決算説明補助資料</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 05 AIO -->
+  <div>
+    <div class="sec-label">05 AIO戦略</div>
+    <div class="sec-heading">AI検索時代の情報戦略</div>
+    <div class="sec-body">AI Overviewが検索の主流になる時代。宇宙事業者が「AIに正しく語られる」情報基盤の構築は、広報の必須要件です。</div>
+
+    <div class="aio-highlight">
+      <div class="aio-num">4x</div>
+      <div class="aio-desc">noteへの生成AI経由の流入は、検索からの期待値の約4倍。<br><span style="font-size:11px;color:#888780;">出典: ヴァリューズ × note 共同調査（2025年10月）</span></div>
+    </div>
+
+    <div class="aio-cards">
+      <div class="aio-card">
+        <h4>構造化された情報がAIに選ばれる</h4>
+        <p>AIは正確で構造化された情報を優先的に引用します。プロの編集による質の高い記事は、AI検索での引用率を高めます。</p>
+      </div>
+      <div class="aio-card">
+        <h4>宇宙産業×専門性の壁</h4>
+        <p>技術的な正確性と一般読者への分かりやすさを両立した記事は、AIが「信頼できるソース」として優先参照します。</p>
+      </div>
+      <div class="aio-card">
+        <h4>長期資産としてのストック型コンテンツ</h4>
+        <p>note記事の約40%が1年後も読まれ続けるデータが示す通り、ストック型コンテンツは時間とともに価値が増大します。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 06 Trust -->
+  <div class="trust-section">
+    <div class="trust-label">06 StoryHubの実績</div>
+    <div class="trust-heading">大手メディアからスタートアップまで、150社以上の導入実績</div>
+    <div class="trust-body">朝日新聞社をはじめとする大手メディア企業にAI編集基盤を提供。上場企業のIRから大規模イベントレポートまで、プロユースに耐えうる品質を実証しています。</div>
+
+    <div class="trust-stats">
+      <div class="ts-card">
+        <div class="ts-num">150+</div>
+        <div class="ts-label">導入メディア企業</div>
+      </div>
+      <div class="ts-card">
+        <div class="ts-num">2.5億</div>
+        <div class="ts-label">シリーズA累計調達</div>
+      </div>
+      <div class="ts-card">
+        <div class="ts-num">91%</div>
+        <div class="ts-label">継続利用意向</div>
+      </div>
+      <div class="ts-card">
+        <div class="ts-num">2件</div>
+        <div class="ts-label">特許取得</div>
+      </div>
+    </div>
+
+    <div class="trust-media-title">MEDIA & AWARDS</div>
+    <div class="media-logos">
+      <div class="media-logo">すごいベンチャー100</div>
+      <div class="media-logo">未来の市場をつくる100社</div>
+      <div class="media-logo">急成長テック8社</div>
+      <div class="media-logo">IPOロケテ候補</div>
+      <div class="media-logo">朝日新聞社</div>
+      <div class="media-logo">日経新聞社</div>
+      <div class="media-logo">産経新聞社</div>
+      <div class="media-logo">信濃毎日新聞</div>
+    </div>
+
+    <div class="trust-cases">
+      <div class="tc-card">
+        <div class="tc-tag">IR SOLUTION</div>
+        <div class="tc-title">上場企業のIR支援</div>
+        <div class="tc-body">note社、AXEL SPACE社など上場企業のIR情報発信をStoryHubプラットフォームで支援。</div>
+      </div>
+      <div class="tc-card">
+        <div class="tc-tag">EVENT REPORT</div>
+        <div class="tc-title">SuShi Tech Tokyo 2026</div>
+        <div class="tc-body">アジア最大級カンファレンスのセッション記事化をnote社と共同支援。約15〜20セッションを記事化。</div>
+      </div>
+      <div class="tc-card">
+        <div class="tc-tag">CO-CREATION</div>
+        <div class="tc-title">東急 まちの情報流通PF</div>
+        <div class="tc-body">東急株式会社との共創プロジェクト。地域の一次情報をAIで記事化し、まちのメディアとして流通。</div>
+      </div>
+      <div class="tc-card">
+        <div class="tc-tag">HUMAN IN THE LOOP</div>
+        <div class="tc-title">プロ編集体制</div>
+        <div class="tc-body">AIに熟達したプロフェッショナルエディトリアルファームと協業し、品質を担保。</div>
+      </div>
+    </div>
+
+    <div class="trust-investors">
+      <div class="trust-investors-label">INVESTORS</div>
+      <div class="trust-investors-text">Spiral Capital / Genesia Ventures / note株式会社</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 07 Quality -->
+  <div>
+    <div class="sec-label">07 品質管理</div>
+    <div class="sec-heading">品質を支える3つの仕組み</div>
+    <div class="sec-body">宇宙産業の情報は正確性が生命線。AIの効率とプロの判断を組み合わせた品質管理体制を構築します。</div>
+
+    <div class="quality-cards">
+      <div class="q-card">
+        <h4>ブランドメモリー</h4>
+        <p>各宇宙事業者のトーン、技術用語、ブランドガイドラインをAIに学習させ、一貫性のある情報発信を自動化します。複数コンテンツを展開しても「らしさ」が崩れません。</p>
+      </div>
+      <div class="q-card">
+        <h4>Human in the Loop</h4>
+        <p>AIの一次加工 → プロ編集者の構成・リライト → クライアント確認。3段階の品質管理フローを標準実装。AI任せにしない、人間の判断が介在する制作体制です。</p>
+      </div>
+      <div class="q-card">
+        <h4>レビュー・ファクトチェック（校正校閲）</h4>
+        <p>AI校正ツールとプロの校閲者によるダブルチェック体制。技術情報の正確性、数値の整合性、引用の適切性をファクトベースで検証し、プロユースに耐えうる品質を担保します。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    StoryHub株式会社 | Confidential | 2026.05<br>
+    東京都港区虎ノ門一丁目10-5 KDX虎ノ門一丁目ビル11階
+  </div>
+
+</div>
+
+<button class="pdf-btn" onclick="window.print()">
+  <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  PDFダウンロード
+</button>
+
+</body>
+</html>
