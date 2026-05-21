@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/site.js": {
-      "includeFiles": "{index.html}"
+      "includeFiles": "index.html"
     }
   },
   "routes": [
