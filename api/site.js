@@ -9,13 +9,26 @@ const ROUTES = {
 };
 
 const pages = {};
+const loadErrors = {};
 for (const [route, file] of Object.entries(ROUTES)) {
-  const filePath = path.resolve(__dirname, "..", file);
-  try {
-    pages[route] = fs.readFileSync(filePath, "utf8");
-  } catch (e) {
-    pages[route] = null;
+  const candidates = [
+    path.resolve(__dirname, "..", file),
+    path.resolve(process.cwd(), file),
+    path.resolve(__dirname, file),
+    path.resolve("/var/task", file),
+  ];
+  let loaded = null;
+  let lastErr = null;
+  for (const p of candidates) {
+    try {
+      loaded = fs.readFileSync(p, "utf8");
+      break;
+    } catch (e) {
+      lastErr = `${p}: ${e.code || e.message}`;
+    }
   }
+  pages[route] = loaded;
+  if (!loaded) loadErrors[route] = lastErr;
 }
 
 function unauthorized(res) {
@@ -37,7 +50,8 @@ module.exports = function handler(req, res) {
   const html = pages[route];
 
   if (!html) {
-    return res.status(404).send("Not Found");
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    return res.status(404).send(`Not Found\n__dirname=${__dirname}\ncwd=${process.cwd()}\nerrors=${JSON.stringify(loadErrors, null, 2)}`);
   }
 
   res.setHeader("Content-Type", "text/html; charset=utf-8");
